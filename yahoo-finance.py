@@ -29,7 +29,7 @@ def stock_history(name, days=0):
     else:
         result=None
     return result
-symbol_list =list(source_df['SYMBOL'])
+symbol_list =list(source_df['SYMBOL'])[0:50]
 final = pd.DataFrame(columns=['SYMBOL', 'Open', 'Low', 'High', 'Close', 'Volume'])
 for x in symbol_list:
     df = stock_history(x)
@@ -37,5 +37,5 @@ for x in symbol_list:
         final = pd.concat([final, df])
 sorted_final=final.sort_values(by='Volume',ascending=False)
 merge_df=sorted_final.merge(source_df,on='SYMBOL',how="left")
-dailysheet=gs.worksheet("Daily-Update")
+dailysheet=gs.worksheet("DailyUpdate")
 set_with_dataframe(dailysheet,merge_df)
