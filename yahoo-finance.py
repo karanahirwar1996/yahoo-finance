@@ -36,6 +36,6 @@ for x in symbol_list:
     if df is not None:
         final = pd.concat([final, df])
 sorted_final=final.sort_values(by='Volume',ascending=False)
-merge_df=sorted_final.merge(loss_df,on='SYMBOL',how="left")
+merge_df=sorted_final.merge(source_df,on='SYMBOL',how="left")
 dailysheet=gs.worksheet("Daily-Update")
 set_with_dataframe(dailysheet,merge_df)
