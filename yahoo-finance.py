@@ -38,4 +38,5 @@ for x in symbol_list:
 sorted_final=final.sort_values(by='Volume',ascending=False)
 merge_df=sorted_final.merge(source_df,on='SYMBOL',how="left")
 dailysheet=gs.worksheet("DailyUpdate")
+dailysheet.clear()
 set_with_dataframe(dailysheet,merge_df)
