@@ -29,7 +29,7 @@ def stock_history(name, days=0):
     else:
         result=None
     return result
-symbol_list =list(source_df['SYMBOL'])[0:50]
+symbol_list =list(source_df['SYMBOL'])
 final = pd.DataFrame(columns=['SYMBOL', 'Open', 'Low', 'High', 'Close', 'Volume'])
 for x in symbol_list:
     df = stock_history(x)
